@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
+    <title>Project Tree</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <h1>Project Tree</h1>
+            <p>Projects → Milestones → Tasks → Subtasks</p>
+        </div>
+        <button id="addProjectBtn" class="primary-btn">+ مشروع جديد</button>
+    </header>
+
+    <main id="app" class="container"></main>
+
+    <template id="projectTemplate">
+        <section class="project-card">
+            <div class="project-header">
+                <div class="project-info">
+                    <div class="eyebrow">PROJECT</div>
+                    <h2 class="project-title"></h2>
+                    <div class="progress-row">
+                        <div class="progress-bar"><div class="progress-fill"></div></div>
+                        <strong class="progress-text">0%</strong>
+                    </div>
+                </div>
+                <div class="project-actions">
+                    <button class="add-milestone-btn">+ Milestone</button>
+                    <button class="delete-project-btn danger">حذف</button>
+                </div>
+            </div>
+            <div class="milestones"></div>
+        </section>
+    </template>
+
+    <script src="app.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("service-worker.js").catch(() => {});
+            });
+        }
+    </script>
+</body>
+</html>
